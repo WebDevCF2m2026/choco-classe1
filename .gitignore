@@ -1,2 +1,4 @@
-
+# Ignore le dossier .idea créé par les IDEs de JetBrains
 .idea/
+# configuration en production
+config-prod.php

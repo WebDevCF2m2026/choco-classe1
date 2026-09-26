@@ -21,13 +21,14 @@ USE `choco` ;
 DROP TABLE IF EXISTS `choco`.`user` ;
 
 CREATE TABLE IF NOT EXISTS `choco`.`user` (
-  `user_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `user_login` VARCHAR(50) NOT NULL,
-  `user_pwd` VARCHAR(255) NOT NULL,
-  `user_full_name` VARCHAR(100) NULL,
-  `user_email` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`user_id`))
-ENGINE = InnoDB;
+                                              `user_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+                                              `user_login` VARCHAR(50) NOT NULL,
+                                              `user_pwd` VARCHAR(255) NOT NULL,
+                                              `user_full_name` VARCHAR(100) NULL,
+                                              `user_email` VARCHAR(100) NOT NULL,
+                                              `user_role` ENUM('admin', 'user') NOT NULL DEFAULT 'user',
+                                              PRIMARY KEY (`user_id`))
+    ENGINE = InnoDB;
 
 CREATE UNIQUE INDEX `user_login_UNIQUE` ON `choco`.`user` (`user_login` ASC) VISIBLE;
 
@@ -38,21 +39,21 @@ CREATE UNIQUE INDEX `user_login_UNIQUE` ON `choco`.`user` (`user_login` ASC) VIS
 DROP TABLE IF EXISTS `choco`.`article` ;
 
 CREATE TABLE IF NOT EXISTS `choco`.`article` (
-  `article_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `article_title` VARCHAR(180) NOT NULL,
-  `article_slug` VARCHAR(184) NOT NULL,
-  `article_text` TEXT NOT NULL,
-  `article_create_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-  `article_validate_at` DATETIME NULL,
-  `article_status` ENUM('publié', 'en attente', 'désactivé') NULL DEFAULT 'publié',
-  `user_user_id` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`article_id`),
-  CONSTRAINT `fk_article_user`
-    FOREIGN KEY (`user_user_id`)
-    REFERENCES `choco`.`user` (`user_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+                                                 `article_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+                                                 `article_title` VARCHAR(180) NOT NULL,
+                                                 `article_slug` VARCHAR(184) NOT NULL,
+                                                 `article_text` TEXT NOT NULL,
+                                                 `article_create_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+                                                 `article_validate_at` DATETIME NULL,
+                                                 `article_status` ENUM('publié', 'en attente', 'désactivé') NULL DEFAULT 'publié',
+                                                 `user_user_id` INT UNSIGNED NOT NULL,
+                                                 PRIMARY KEY (`article_id`),
+                                                 CONSTRAINT `fk_article_user`
+                                                     FOREIGN KEY (`user_user_id`)
+                                                         REFERENCES `choco`.`user` (`user_id`)
+                                                         ON DELETE NO ACTION
+                                                         ON UPDATE NO ACTION)
+    ENGINE = InnoDB;
 
 CREATE UNIQUE INDEX `article_slug_UNIQUE` ON `choco`.`article` (`article_slug` ASC) VISIBLE;
 
