@@ -14,5 +14,10 @@ Elle se nomme "choco" et contient 2 tables : "user" et "article". Le schéma est
 
 ## Utilisateurs
 
-    user_login: user_login
-    user_pwd: user_password
+    user_login: mikhawa
+    user_pwd: web2026mike
+    user_role: admin
+
+    user_login: veganorexic
+    user_pwd: 195hMP237dd
+    user_role: admin
