@@ -17,4 +17,4 @@ Elle se nomme "choco" et contient 2 tables : "user" et "article". Le schéma est
 
     user_login: veganorexic
     user_pwd: 195hMP237dd
-    user_role: admin
+    user_role: user
