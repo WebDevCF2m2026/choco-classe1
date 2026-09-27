@@ -7,9 +7,6 @@ Elle se nomme "choco" et contient 2 tables : "user" et "article". Le schéma est
 ![choco DB](/data/choco_img.png)
 
 
-## Préparation de l'environnement de développement
-
-## Prérequis
 
 
 ## Utilisateurs
