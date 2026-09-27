@@ -1,5 +1,8 @@
 <?php
 // path: model/manager/UserManager.php
+// typage strict
+declare(strict_types=1);
+
 namespace model\manager;
 
 use model\interface\ManagerInterface;
