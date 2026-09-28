@@ -47,7 +47,7 @@ class ArticleMapping extends AbstractMapping
         // test de longueur
         if($nbTitle <=2 || $nbTitle >180)
             // erreur
-            throw new Exception("Le titre doit avoir entre 3 et 180 caractères");
+            throw new Exception("Le titre doit avoir entre 3 et 180 caractères",333);
         // ok, mise à jour du titre    
         $this->article_title = $title;
     }
