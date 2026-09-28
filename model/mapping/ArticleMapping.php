@@ -15,6 +15,7 @@ class ArticleMapping extends AbstractMapping
     // propriétés (nom des champs de la table article)
     protected ?int $article_id = null;
     protected ?string $article_title = null;
+    protected ?string $article_slug = null;
     // constructeur et hydrate hérités par la classe parent
 
     // création des getters / setters
@@ -50,6 +51,16 @@ class ArticleMapping extends AbstractMapping
             throw new Exception("Le titre doit avoir entre 3 et 180 caractères",333);
         // ok, mise à jour du titre    
         $this->article_title = $title;
+    }
+
+    public function getArticleSlug():?string
+    {
+        return $this->article_slug;
+    }
+
+    public function setArticleSlug(string $slug): void
+    {
+        $this->article_slug = $slug;
     }
 
 }
