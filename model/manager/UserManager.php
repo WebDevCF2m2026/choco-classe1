@@ -1,5 +1,6 @@
 <?php
 // path: model/manager/UserManager.php
+
 // typage strict
 declare(strict_types=1);
 

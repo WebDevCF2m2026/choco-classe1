@@ -3,7 +3,7 @@
 // typage strict
 declare(strict_types=1);
 
-namespace model\manager;
+namespace model\manager\ArticleManager;
 
 use model\interface\ManagerInterface;
 use model\MyPDO;
