@@ -42,6 +42,12 @@ class ArticleMapping extends AbstractMapping
     // constante privée pour les statuts d'article
     private const STATUS = ['publié', 'en attente', 'désactivé'];
 
+    // liste des statuts autorisés (pour les formulaires)
+    public static function getStatusList(): array
+    {
+        return self::STATUS;
+    }
+
     // Le constructeur est hérité de AbstractMapping, il appelle la méthode hydrate() pour initialiser les propriétés avec les données passées en paramètre.
 
     // getters

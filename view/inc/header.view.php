@@ -27,7 +27,10 @@ $pageTitle = isset($title) ? htmlspecialchars($title) . ' | Choco' : 'Choco';
             <ul>
                 <li><a href="<?= RACINE_URL ?>/">Accueil</a></li>
                 <?php if (isset($_SESSION['user_login'])): ?>
-                    <li><a href="<?= RACINE_URL ?>/admin">Administration</a></li>
+                    <?php if (($_SESSION['user_role'] ?? '') === 'admin'): ?>
+                        <li><a href="<?= RACINE_URL ?>/admin">Administration</a></li>
+                    <?php endif; ?>
+                    <li><a href="<?= RACINE_URL ?>/profil">Mon profil</a></li>
                     <li><a class="btn btn-outline" href="<?= RACINE_URL ?>/deconnexion">Déconnexion</a></li>
                 <?php else: ?>
                     <li><a class="btn" href="<?= RACINE_URL ?>/connexion">Connexion</a></li>

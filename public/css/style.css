@@ -389,7 +389,9 @@ h1, h2, h3 {
     font-size: .95rem;
 }
 
-.form-group input {
+.form-group input,
+.form-group textarea,
+.form-group select {
     width: 100%;
     padding: .65rem .8rem;
     border: 1px solid var(--border);
@@ -400,7 +402,15 @@ h1, h2, h3 {
     transition: border-color .2s, box-shadow .2s;
 }
 
-.form-group input:focus {
+.form-group textarea {
+    resize: vertical;
+    min-height: 200px;
+    line-height: 1.6;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
     outline: none;
     border-color: var(--accent);
     box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
@@ -428,10 +438,302 @@ h1, h2, h3 {
     color: #c0392b;
 }
 
+.alert-success {
+    background: color-mix(in srgb, #2e7d4f 12%, transparent);
+    border: 1px solid color-mix(in srgb, #2e7d4f 40%, transparent);
+    color: #2e7d4f;
+}
+
 @media (prefers-color-scheme: dark) {
     .alert-error {
         color: #f1948a;
     }
+
+    .alert-success {
+        color: #7fd1a1;
+    }
+}
+
+.form-card-wide {
+    max-width: 760px;
+    margin-top: 0;
+}
+
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: .75rem;
+}
+
+.form-actions .btn {
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+@media (max-width: 480px) {
+    .form-actions .btn {
+        flex: 1;
+        text-align: center;
+    }
+}
+
+/* texte réservé aux lecteurs d'écran */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+/* ---------- Administration ---------- */
+
+.page-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.page-head h1 {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    margin-bottom: .2em;
+}
+
+.page-head p {
+    margin: 0;
+    color: var(--muted);
+}
+
+.table-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .95rem;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: .85rem 1rem;
+    text-align: left;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border);
+}
+
+.admin-table th {
+    font-size: .8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--muted);
+    background: var(--bg);
+}
+
+.admin-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.admin-table tbody tr:hover {
+    background: color-mix(in srgb, var(--accent) 4%, transparent);
+}
+
+.cell-title {
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.cell-actions {
+    white-space: nowrap;
+    text-align: right;
+}
+
+.cell-actions a,
+.cell-actions form {
+    display: inline-block;
+    margin-left: .75rem;
+    font-weight: 500;
+}
+
+.cell-actions form {
+    margin-bottom: 0;
+}
+
+.link-danger {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #c0392b;
+    font: inherit;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.link-danger:hover {
+    text-decoration: underline;
+}
+
+@media (prefers-color-scheme: dark) {
+    .link-danger {
+        color: #f1948a;
+    }
+}
+
+/* sur mobile, chaque ligne devient une carte */
+@media (max-width: 720px) {
+    .table-wrap {
+        background: none;
+        border: 0;
+        box-shadow: none;
+    }
+
+    .admin-table thead {
+        display: none;
+    }
+
+    .admin-table,
+    .admin-table tbody,
+    .admin-table tr,
+    .admin-table td {
+        display: block;
+    }
+
+    .admin-table tr {
+        margin-bottom: 1rem;
+        padding: .5rem 0;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+    }
+
+    .admin-table td {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: .45rem 1rem;
+        border: 0;
+    }
+
+    .admin-table td[data-label]::before {
+        content: attr(data-label);
+        color: var(--muted);
+        font-size: .85rem;
+        font-weight: 500;
+    }
+
+    .admin-table td.cell-title {
+        display: block;
+        font-size: 1.05rem;
+    }
+
+    .admin-table td.cell-title::before {
+        display: none;
+    }
+
+    .cell-actions {
+        justify-content: flex-start;
+        margin-top: .35rem;
+        padding-top: .75rem !important;
+        border-top: 1px solid var(--border) !important;
+    }
+
+    .cell-actions a,
+    .cell-actions form {
+        margin: 0 1rem 0 0;
+    }
+}
+
+/* ---------- Badges de statut ---------- */
+
+.badge {
+    display: inline-block;
+    padding: .15em .65em;
+    border-radius: 999px;
+    font-size: .8rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.badge-success {
+    background: color-mix(in srgb, #2e7d4f 15%, transparent);
+    color: #2e7d4f;
+}
+
+.badge-warning {
+    background: color-mix(in srgb, #b7791f 15%, transparent);
+    color: #9a6517;
+}
+
+.badge-muted {
+    background: color-mix(in srgb, var(--muted) 15%, transparent);
+    color: var(--muted);
+}
+
+@media (prefers-color-scheme: dark) {
+    .badge-success {
+        color: #7fd1a1;
+    }
+
+    .badge-warning {
+        color: #f0c27b;
+    }
+}
+
+/* ---------- Profil ---------- */
+
+.profile-card {
+    text-align: center;
+}
+
+.avatar {
+    display: grid;
+    place-items: center;
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.profile-list {
+    margin: 0 0 1.5rem;
+    text-align: left;
+    border-top: 1px solid var(--border);
+}
+
+.profile-list div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: .25rem 1rem;
+    padding: .8rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.profile-list dt {
+    color: var(--muted);
+    font-size: .95rem;
+}
+
+.profile-list dd {
+    margin: 0;
+    font-weight: 500;
+    overflow-wrap: anywhere;
 }
 
 /* ---------- Pied de page ---------- */

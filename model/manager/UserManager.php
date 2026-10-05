@@ -52,6 +52,29 @@ class UserManager implements ManagerInterface
 
         return new UserMapping($user);
     }
+
+    // récupération d'un utilisateur par son id (sans le mot de passe), pour la page de profil
+    public function getUserById(int $id): ?UserMapping
+    {
+        $sql = "SELECT user_id, user_login, user_full_name, user_email, user_role
+            FROM user
+            WHERE user_id = :id";
+        $stmt = $this->connect->prepare($sql);
+        $stmt->bindValue(':id', $id, MyPDO::PARAM_INT);
+        try{
+            $stmt->execute();
+        } catch (Exception $e) {
+            throw new Exception("Erreur lors de la récupération de l'utilisateur : " . $e->getMessage());
+        }
+
+        if($stmt->rowCount() === 0) {
+            return null;
+        }
+        $user = $stmt->fetch();
+        $stmt->closeCursor();
+
+        return new UserMapping($user);
+    }
         static public function sessionUser(UserMapping $user): void
         {
             // nouvel identifiant de session pour éviter la fixation de session

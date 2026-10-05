@@ -43,6 +43,7 @@ if(isset($_GET['pg'],$_GET['slug']) && $_GET['pg'] == 'article') {
                 // message volontairement vague pour ne pas indiquer si le login existe
                 $error = "Identifiant ou mot de passe incorrect.";
             } else {
+                // méthode statique pour créer la session de l'utilisateur
                 UserManager::sessionUser($user);
             }
         }
