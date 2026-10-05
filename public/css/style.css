@@ -357,6 +357,83 @@ h1, h2, h3 {
     overflow-wrap: anywhere;
 }
 
+/* ---------- Formulaires ---------- */
+
+.form-card {
+    max-width: 420px;
+    margin: 1rem auto 0;
+    padding: clamp(1.5rem, 5vw, 2.5rem);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.form-card h1 {
+    font-size: 1.75rem;
+}
+
+.form-intro {
+    margin: 0 0 1.5rem;
+    color: var(--muted);
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: .35rem;
+    font-weight: 500;
+    font-size: .95rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: .65rem .8rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    color: var(--text);
+    font: inherit;
+    transition: border-color .2s, box-shadow .2s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    padding: .7em 1.1em;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.alert {
+    margin: 0 0 1.25rem;
+    padding: .75rem 1rem;
+    border-radius: 8px;
+    font-size: .95rem;
+}
+
+.alert-error {
+    background: color-mix(in srgb, #c0392b 12%, transparent);
+    border: 1px solid color-mix(in srgb, #c0392b 40%, transparent);
+    color: #c0392b;
+}
+
+@media (prefers-color-scheme: dark) {
+    .alert-error {
+        color: #f1948a;
+    }
+}
+
 /* ---------- Pied de page ---------- */
 
 .site-footer {
