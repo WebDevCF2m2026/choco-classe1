@@ -10,4 +10,5 @@ $articleManager = new ArticleManager($db);
 
 $allArticles = $articleManager->getAllArticles();
 
-var_dump($allArticles); // Affiche le tableau d'objets ArticleMapping
+// affichage de la page d'accueil
+require RACINE_PATH.'/view/public/homepage.view.php';
