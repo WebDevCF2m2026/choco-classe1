@@ -10,11 +10,12 @@ use model\mapping\UserMapping;
 
 $articleManager = new ArticleManager($db);
 
+// affichage d'un article
 if(isset($_GET['pg'],$_GET['slug']) && $_GET['pg'] == 'article') {
     $slug = $_GET['slug'];
     $article = $articleManager->getArticleBySlug($slug);
     require RACINE_PATH.'/view/public/article.view.php';
-
+// affichage de la page de connexion
 } elseif(isset($_GET['pg']) && $_GET['pg'] == 'connexion') {
     $error = null;
     $login = '';
@@ -52,6 +53,7 @@ if(isset($_GET['pg'],$_GET['slug']) && $_GET['pg'] == 'article') {
     require RACINE_PATH.'/view/public/connexion.view.php';
 
 } else {
+
     $allArticles = $articleManager->getAllArticles();
 
 // affichage de la page d'accueil

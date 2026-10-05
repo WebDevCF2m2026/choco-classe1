@@ -9,13 +9,13 @@ use model\interface\ManagerInterface;
 use model\MyPDO;
 use model\mapping\ArticleMapping;
 use model\mapping\UserMapping;
-use model\trait\SlugifyTrait;
 use Exception;
+// appel du trait pour créer des slugs uniques
+use model\trait\SlugifyTrait;
 
 class ArticleManager implements ManagerInterface
 {
-    // création des slugs pour les nouveaux articles
-    use SlugifyTrait;
+
 
     protected MyPDO $connect;
 
@@ -154,6 +154,9 @@ class ArticleManager implements ManagerInterface
         $art->setUser(new UserMapping($article));
         return $art;
     }
+
+    // création des slugs pour les nouveaux articles
+    use SlugifyTrait;
 
     // création d'un article, retourne l'id du nouvel article
     public function insertArticle(ArticleMapping $article): int
