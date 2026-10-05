@@ -317,6 +317,46 @@ h1, h2, h3 {
     font-size: .95rem;
 }
 
+/* ---------- Détail d'un article ---------- */
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    font-size: .95rem;
+    font-weight: 500;
+}
+
+.article-detail {
+    max-width: 72ch;
+    margin: 0 auto;
+    padding: clamp(1.25rem, 4vw, 2.5rem);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.article-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.article-header h1 {
+    font-size: clamp(1.6rem, 4vw, 2.3rem);
+    letter-spacing: -.02em;
+}
+
+.article-header .card-meta {
+    margin: 0;
+}
+
+.article-content {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    overflow-wrap: anywhere;
+}
+
 /* ---------- Pied de page ---------- */
 
 .site-footer {
