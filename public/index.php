@@ -23,6 +23,7 @@ spl_autoload_register(function ($class) {
 // Connexion à la base de données en singleton, on ne peut pas faire de new MyPDO() car le constructeur est protégé
 $db = MyPDO::getInstance();
 
+
 // appel du contrôleur
 require_once RACINE_PATH.'/controller/RouterController.php';
 

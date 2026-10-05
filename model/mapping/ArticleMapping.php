@@ -10,6 +10,8 @@ use model\abstract\AbstractMapping;
 // Exception si le statut de l'article n'est pas valide
 use Exception;
 
+use model\mapping\UserMapping;
+
 class ArticleMapping extends AbstractMapping
 {
     // propriétés correspondant aux champs de la table `article`
@@ -21,6 +23,20 @@ class ArticleMapping extends AbstractMapping
     protected ?string $article_validate_at = null;
     protected ?string $article_status = null;
     protected ?int $user_user_id = null;
+
+    // ajout de l'utilisateur lié lors d'une requête
+    protected ?UserMapping $user = null;
+
+    public function getUser(): ?UserMapping
+    {
+        return $this->user;
+    }
+
+    public function setUser(?UserMapping $user): void
+    {
+        $this->user = $user;
+    }
+
 
     // valeurs autorisées pour `article_status`
     // constante privée pour les statuts d'article
