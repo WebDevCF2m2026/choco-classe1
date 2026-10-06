@@ -16,4 +16,4 @@ const DB_TYPE = "mysql"; // valable pour MySQL et/ou MariaDB
 const RACINE_PATH = __DIR__;
 // URL racine de notre site pour le navigateur (jusqu'au dossier public)
 // évite les problèmes de chemins relatifs qui sont liés à la réécriture des URLs
-const RACINE_URL = "http://choco:8080/";
+const RACINE_URL = "http://choco2:8080";

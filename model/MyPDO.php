@@ -16,10 +16,13 @@ class MyPDO extends PDO
     // Le constructeur est protégé pour empêcher l'utilisation de 'new' depuis l'extérieur
     protected function __construct() {
         // Appel du constructeur parent avec les paramètres de connexion à la base de données
-        parent::__construct(DB_TYPE.':host='.DB_HOST.';'.DB_PORT.'dbname='.DB_NAME.';charset='.DB_CHARSET, DB_LOGIN, DB_PWD,$options = [
-            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        ]);
+        parent::__construct(DB_TYPE . ':host=' . DB_HOST . ';port=' . DB_PORT . ';dbname=' . DB_NAME . ';charset=' . DB_CHARSET,
+            DB_LOGIN,
+            DB_PWD,
+            [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            ]);
     }
 
     // Méthode pour obtenir l'instance unique
