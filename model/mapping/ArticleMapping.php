@@ -42,6 +42,9 @@ class ArticleMapping extends AbstractMapping
     // constante privée pour les statuts d'article
     private const STATUS = ['publié', 'en attente', 'désactivé'];
 
+    // statut par défaut d'un nouvel article
+    public const DEFAULT_STATUS = 'en attente';
+
     // liste des statuts autorisés (pour les formulaires)
     public static function getStatusList(): array
     {
