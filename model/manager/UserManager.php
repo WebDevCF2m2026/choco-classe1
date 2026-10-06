@@ -101,4 +101,33 @@ class UserManager implements ManagerInterface
             header('Location: ' . RACINE_URL . '/');
             exit;
         }
+
+        // l'utilisateur connecté est-il administrateur ?
+        static public function isAdmin(): bool
+        {
+            return ($_SESSION['user_role'] ?? null) === 'admin';
+        }
+
+        // vérification du jeton CSRF envoyé par un formulaire
+        static public function checkToken(mixed $token): bool
+        {
+            return is_string($token) && isset($_SESSION['token'])
+                && hash_equals($_SESSION['token'], $token);
+        }
+
+        // enregistre un message à afficher après la redirection, puis redirige
+        static public function flashAndRedirect(string $path, string $message, string $type = 'success'): never
+        {
+            $_SESSION['flash'] = ['message' => $message, 'type' => $type];
+            header('Location: ' . RACINE_URL . $path);
+            exit;
+        }
+
+        // récupère le message flash éventuel, qui n'est affiché qu'une seule fois
+        static public function getFlash(): ?array
+        {
+            $flash = $_SESSION['flash'] ?? null;
+            unset($_SESSION['flash']);
+            return $flash;
+        }
 }
